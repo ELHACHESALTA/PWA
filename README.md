@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# :computer: PWA 2024
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Trabajo Práctico: React
 
-## Available Scripts
+## :office: Universidad Nacional del Comahue - Facultad de Informática
 
-In the project directory, you can run:
+- **Carrera:** Tecnicatura Universitaria en Desarrollo Web
+- **Materia:** Programación Web Avanzada
+- **Año:** 2024
 
-### `npm start`
+## :muscle: Integrantes del Equipo
+| Nombre                              |  Legajo    | Mail                                     | GitHub                                                      |
+|:-----------------------------------:|:----------:|:----------------------------------------:|:-----------------------------------------------------------:|
+| **Ferrada, Mauro**                  | FAI-4211   | mauro.ferrada@est.fi.uncoma.edu.ar       | [](https://github.com/) |
+| **Herrera, Julio Federico**         | FAI-4285   | julio.herrera@est.fi.uncoma.edu.ar       | [ELHACHESALTA](https://github.com/ELHACHESALTA)             |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :book: Consigna
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Función de los archivos principales en un proyecto React:
 
-### `npm test`
+- **index.js:** Este archivo es el punto de entrada de la aplicación React. Su función es renderizar el componente principal de la aplicación en el DOM del navegador. En la mayoría de los casos, el componente raíz que se renderiza es **\<App \/>**, aunque puede ser cualquier otro componente según la configuración del proyecto. En resumen, **index.js** es responsable de iniciar la aplicación React y conectarla con el HTML del navegador.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **App.js:** Este archivo es el componente principal de la aplicación React. Contiene la estructura general de la aplicación y, a menudo, sirve como contenedor para otros componentes. Dentro de este archivo, se define la estructura de la aplicación, incluyendo el diseño, la navegación y la lógica de renderizado condicional. Se pueden importar otros componentes y usarlos para construir la interfaz de usuario de la aplicación. En resumen, **App.js** es el punto de inicio para la composición de componentes de la aplicación React.
 
-### `npm run build`
+- **index.css:** Este archivo suele contener estilos CSS globales que se aplicarán a todos los componentes de la aplicación, aunque es posible también, que haya estilos específicos para componentes individuales.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **package.json:** Este es un archivo de configuración de Node.js que se utiliza para definir metadatos del proyecto y gestionar sus dependencias. Aquí se especifican detalles como el nombre del proyecto, la versión, los scripts de ejecución, las dependencias del proyecto (incluyendo React y otras bibliotecas utilizadas), así como también otras configuraciones relacionadas con el proyecto. Es un archivo fundamental si se utiliza herramientas como npm para la gestión de paquetes, ya que permite instalar, actualizar y eliminar dependencias fácilmente.
