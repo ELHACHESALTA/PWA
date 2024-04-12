@@ -1,3 +1,11 @@
-.homeClass {
+.home {
     width: 600px;
+}
+
+.search, .addtask, .tasklist, .counter {
+    background-color: #282434;
+    border: 1px solid black;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
 }

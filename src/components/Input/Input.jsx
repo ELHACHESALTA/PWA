@@ -1,9 +1,10 @@
 import style from './Input.module.css';
 
-const Input = ({text}) => {
+const Input = ({text, value, onChangeHandler}) => {
   return (
-    <div className={style.inputClass}>
+    <div className={style.input}>
       {text}
+      <input type="text" value={value} onChange={onChangeHandler} />
     </div>
   );
 };
