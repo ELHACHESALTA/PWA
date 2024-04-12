@@ -1,6 +1,8 @@
 # :computer: PWA 2024
 
-- Trabajo Práctico: React
+- Trabajo Práctico: React - Aplicación de Lista de Tareas (To-Do List)
+
+> En el siguiente proyecto se desarrolló a una aplicación que permite al usuario agregar, marcar como completadas y eliminar tareas de una lista. Cada tarea tiene una descripción y un estado de completitud. Con la lista se puede observar el número total de tareas y cuantas están completadas. Además se implemento un buscador que filtra las tareas según lo que sea ingresado, se utilizó componentes reutilizables, el hook useState para almacenar el estado interno de las tareas, renderizado de listas con .map(), renderizado condicional y botones para cambiar el estado o eliminar tareas.
 
 ## :office: Universidad Nacional del Comahue - Facultad de Informática
 
@@ -11,7 +13,7 @@
 ## :muscle: Integrantes del Equipo
 | Nombre                              |  Legajo    | Mail                                     | GitHub                                                      |
 |:-----------------------------------:|:----------:|:----------------------------------------:|:-----------------------------------------------------------:|
-| **Ferrada, Mauro**                  | FAI-4211   | mauro.ferrada@est.fi.uncoma.edu.ar       | [](https://github.com/) |
+| **Ferrada, Mauro**                  | FAI-4211   | mauro.ferrada@est.fi.uncoma.edu.ar       | [MauroFerrada](https://github.com/MauroFerrada)             |
 | **Herrera, Julio Federico**         | FAI-4285   | julio.herrera@est.fi.uncoma.edu.ar       | [ELHACHESALTA](https://github.com/ELHACHESALTA)             |
 
 ## :book: Consigna
