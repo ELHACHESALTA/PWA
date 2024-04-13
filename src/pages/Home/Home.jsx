@@ -4,75 +4,71 @@ import Title from '../../components/Title/Title'
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 
-import Tasklist from '../../components/Tasklist/Tasklist'
-import Counter from '../../components/Counter/Counter'
-
 const tasks = [];
 
 const Home = () => {
 
-  const [newTask, setNewTask] = useState("");
+  const [tareas, setTareas] = useState([]);
+  const [nuevaTarea, setNuevaTarea] = useState("");
 
   const onChangeHandler = (event) => {
-    setNewTask(event.target.value);
-  };
+    setNuevaTarea(event.target.value);
+  }
 
-  const [tasksState, setTasksState] = useState(tasks);
-
-  const saveTask = () => {
-    const newTaskToAdd = {
-      description: newTask
-    };
-    setTasksState([...tasksState, newTaskToAdd]);
-  };
-
-  console.log(tasks);
+  const agregarTarea = () => {
+    const nuevaTareaAgregar = {
+      descripcion: nuevaTarea,
+      completada: false
+    }
+    setTareas([...tareas, nuevaTareaAgregar]);
+    setNuevaTarea("");
+  }
 
   return (
     <div className={style.home}>
-      <Title text="Title" />
-      {/* Inicio de Search */}
+      <Title text="Título" />
+      {/* Inicio de Búsqueda */}
       <div>
         <div>
-          Search
+          Búsqueda
         </div>
         <div className={style.search}>
           <Input text="Input" />
         </div>
       </div>
-      {/* Fin de Search */}
-      {/* Inicio de Addtask */}
+      {/* Fin de Búsqueda */}
+      {/* Inicio de Agregar Tarea*/}
       <div>
         <div>
-          Addtask
+          Agregar Tarea
         </div>
         <div className={style.addtask}>
-          {tasksState.map((task) => {
-            return <p key={task.description}>Hola {task.description}</p>;
-          })}
-          <p>newTask: {newTask}</p>
-          <Input text="Input" value={newTask} onChangeHandler={onChangeHandler} />
-          <Button text="Agregar" onClick={saveTask} disabled={newTask ? "" : "disabled" } />
+          <Input value={nuevaTarea} onChangeHandler={onChangeHandler} />
+          <Button text="Agregar" onClick={agregarTarea} disabled={nuevaTarea ? "" : "disabled"} />
         </div>
       </div>
-      {/* Fin de Addtask */}
-      {/* Inicio de Tasklist */}
+      {/* Fin de Agregar Tarea */}
+      {/* Inicio de Lista de Tareas */}
       <div>
         <div>
-          Tasklist
+          Lista de Tareas
         </div>
         <div className={style.tasklist}>
-          
-          <div>Tarea</div>
+          {tareas.map((tarea) => {
+            return <p key={tarea.descripcion}> Tarea: {tarea.descripcion}</p>;
+          })}
+          {/* {tasksState.map((task) => {
+            return <p key={task.description}>Hola {task.description}</p>;
+          })} */}
           <Button text="Botón Completado" />
           <Button text="Botón Eliminar" />
         </div>
       </div>
-      {/* Fin de Tasklist */}
-      {/* Inicio de Counter */}
+      {/* Fin de Lista de Tareas */}
+      {/* Inicio de Contadores */}
       <div>
         <div>
-          Counter
+          Contadores
         </div>
         <div className={style.counter}>
           <div>
@@ -83,7 +79,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* Fin de Counter */}
+      {/* Fin de Contadores */}
     </div>
   );
 };
