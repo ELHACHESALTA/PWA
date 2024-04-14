@@ -15,6 +15,8 @@ const Home = () => {
     setNuevaTarea(event.target.value);
   }
 
+  const tareasCompletadas = tareas.filter(tarea => tarea.completada === true).length;
+
   const agregarTarea = () => {
     const nuevaTareaAgregar = {
       descripcion: nuevaTarea,
@@ -23,6 +25,19 @@ const Home = () => {
     setTareas([...tareas, nuevaTareaAgregar]);
     setNuevaTarea("");
   }
+
+   
+   const eliminarTarea = (index) => {
+    const tareasActualizadas = [...tareas];
+    tareasActualizadas.splice(index, 1);
+    setTareas(tareasActualizadas);
+  };  
+
+  const completarTarea = (index) => {
+    const tareasActualizadas = [...tareas];
+    tareasActualizadas[index].completada = !tareasActualizadas[index].completada;
+    setTareas(tareasActualizadas);
+  };
 
   return (
     <div className={style.home}>
@@ -51,17 +66,31 @@ const Home = () => {
       {/* Inicio de Lista de Tareas */}
       <div>
         <div>
-          Lista de Tareas
+        Lista de Tareas
         </div>
         <div className={style.tasklist}>
-          {tareas.map((tarea) => {
-            return <p key={tarea.descripcion}> Tarea: {tarea.descripcion}</p>;
-          })}
+        {tareas.length === 0 ? (
+      <p>No hay tareas por realizar</p>
+    ) : (
+      tareas.map((tarea, index) => (
+        <div key={index}>
+          <div key={tarea.descripcion}>
+            {/* Muestra la descripción de la tarea */}
+            <p> Tarea: {tarea.descripcion}</p>
+          </div>
+        </div>
+      ))
+    )}
           {/* {tasksState.map((task) => {
             return <p key={task.description}>Hola {task.description}</p>;
           })} */}
-          <Button text="Botón Completado" />
-          <Button text="Botón Eliminar" />
+
+
+          {tareas.map((tarea, index) => (
+          <Button text="Botón Completado" onClick={() => completarTarea(index)}/>))}
+          {tareas.map((tarea, index) => (
+          <Button text="Botón Eliminar" onClick={() => eliminarTarea(index)}  />
+        ))}
         </div>
       </div>
       {/* Fin de Lista de Tareas */}
@@ -72,10 +101,10 @@ const Home = () => {
         </div>
         <div className={style.counter}>
           <div>
-            Tareas Totales
+            Tareas Totales: {tareas.length}
           </div>
           <div>
-            Tareas Completadas
+            Tareas Completadas: {tareasCompletadas}
           </div>
         </div>
       </div>
