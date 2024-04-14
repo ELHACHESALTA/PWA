@@ -10,10 +10,17 @@ const Home = () => {
 
   const [tareas, setTareas] = useState([]);
   const [nuevaTarea, setNuevaTarea] = useState("");
+  const [busqueda, setBusqueda] = useState("");
 
   const onChangeHandler = (event) => {
     setNuevaTarea(event.target.value);
   }
+
+  const onChangeBusqueda = (event) => {
+    setBusqueda(event.target.value);
+  }
+
+  const tareasFiltradas = tareas.filter(tarea => tarea.descripcion.toLowerCase().includes(busqueda.toLowerCase()));
 
   const tareasCompletadas = tareas.filter(tarea => tarea.completada === true).length;
 
@@ -48,7 +55,7 @@ const Home = () => {
           Búsqueda
         </div>
         <div className={style.search}>
-          <Input text="Input" />
+        <Input text="Input" value={busqueda} onChangeHandler={onChangeBusqueda} />
         </div>
       </div>
       {/* Fin de Búsqueda */}
@@ -69,10 +76,10 @@ const Home = () => {
         Lista de Tareas
         </div>
         <div className={style.tasklist}>
-        {tareas.length === 0 ? (
+        {tareasFiltradas.length === 0 ? (
       <p>No hay tareas por realizar</p>
     ) : (
-      tareas.map((tarea, index) => (
+      tareasFiltradas.map((tarea, index) => (
         <div key={index}>
           <div key={tarea.descripcion}>
             {/* Muestra la descripción de la tarea */}
