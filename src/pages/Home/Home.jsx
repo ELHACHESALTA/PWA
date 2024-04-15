@@ -1,29 +1,38 @@
 import style from './Home.module.css';
+// useState es un Hook de React que te permite agregar una variable de estado a tu componente.
 import { useState } from 'react';
 import Title from '../../components/Title/Title'
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 
-const tasks = [];
-
 const Home = () => {
 
+  // Define el estado que guardará la lista de tareas
   const [tareas, setTareas] = useState([]);
+
+  // Define el estado para una tarea nueva ingresada por el input correspondiente
   const [nuevaTarea, setNuevaTarea] = useState("");
+
+  // Define el estado para la busqueda ingresada por el input correspondiente
   const [busqueda, setBusqueda] = useState("");
 
+  // Crea un nuevo arreglo con las tareas filtradas que coincidan con lo ingresado en búsqueda
+  const tareasFiltradas = tareas.filter(tarea => tarea.descripcion.toLowerCase().includes(busqueda.toLowerCase()));
+
+  // Cuenta el número de tareas completadas
+  const tareasCompletadas = tareas.filter(tarea => tarea.completada === true).length;
+
+  // Función que se ejecuta y actualiza el input para ingresar una tarea nueva
   const onChangeHandler = (event) => {
     setNuevaTarea(event.target.value);
   }
 
+  // Función que se ejecuta y actualiza el input para ingresar una búsqueda
   const onChangeBusqueda = (event) => {
     setBusqueda(event.target.value);
   }
 
-  const tareasFiltradas = tareas.filter(tarea => tarea.descripcion.toLowerCase().includes(busqueda.toLowerCase()));
-
-  const tareasCompletadas = tareas.filter(tarea => tarea.completada === true).length;
-
+  // Función que agrega una nueva tarea al estado de lista de tareas y vacía el input correspondiente
   const agregarTarea = () => {
     const nuevaTareaAgregar = {
       descripcion: nuevaTarea,
@@ -33,13 +42,14 @@ const Home = () => {
     setNuevaTarea("");
   }
 
-   
-   const eliminarTarea = (index) => {
+  // Función que elimina un elemento a partir del índice proporcionado
+  const eliminarTarea = (index) => {
     const tareasActualizadas = [...tareas];
     tareasActualizadas.splice(index, 1);
     setTareas(tareasActualizadas);
   };  
 
+  // Función que cambia el estado de la tarea con el índice proporcionado
   const completarTarea = (index) => {
     const tareasActualizadas = [...tareas];
     tareasActualizadas[index].completada = !tareasActualizadas[index].completada;
@@ -48,71 +58,56 @@ const Home = () => {
 
   return (
     <div className={style.home}>
-      <Title text="Título" />
+      <Title text="Aplicación: To-Do List" />
       {/* Inicio de Búsqueda */}
-      <div>
+      <div className={style.search}>
         <div>
-          Búsqueda
+          Buscar tarea:
         </div>
-        <div className={style.search}>
-        <Input text="Input" value={busqueda} onChangeHandler={onChangeBusqueda} />
-        </div>
+        <Input value={busqueda} onChangeHandler={onChangeBusqueda} placeholder="" />
       </div>
       {/* Fin de Búsqueda */}
       {/* Inicio de Agregar Tarea*/}
-      <div>
-        <div>
-          Agregar Tarea
-        </div>
-        <div className={style.addtask}>
-          <Input value={nuevaTarea} onChangeHandler={onChangeHandler} />
-          <Button text="Agregar" onClick={agregarTarea} disabled={nuevaTarea ? "" : "disabled"} />
-        </div>
+      <div className={style.addtask}>
+        <Input value={nuevaTarea} onChangeHandler={onChangeHandler} placeholder="Agregar nueva tarea" />
+        <Button text="Agregar tarea" onClick={agregarTarea} disabled={nuevaTarea ? "" : "disabled"} />
       </div>
       {/* Fin de Agregar Tarea */}
       {/* Inicio de Lista de Tareas */}
-      <div>
-        <div>
-        Lista de Tareas
-        </div>
-        <div className={style.tasklist}>
-        {tareasFiltradas.length === 0 ? (
-      <p>No hay tareas por realizar</p>
-    ) : (
-      tareasFiltradas.map((tarea, index) => (
-        <div key={index}>
-          <div key={tarea.descripcion}>
-            {/* Muestra la descripción de la tarea */}
-            <p> Tarea: {tarea.descripcion}</p>
-          </div>
-        </div>
-      ))
-    )}
-          {/* {tasksState.map((task) => {
-            return <p key={task.description}>Hola {task.description}</p>;
-          })} */}
-
-
-          {tareas.map((tarea, index) => (
-          <Button text="Botón Completado" onClick={() => completarTarea(index)}/>))}
-          {tareas.map((tarea, index) => (
-          <Button text="Botón Eliminar" onClick={() => eliminarTarea(index)}  />
-        ))}
-        </div>
+      <div className={style.tasklist}>
+        {/* Condición si no hay tareas agregadas */}
+        {tareas.length === 0 ? (
+          <p>No hay tareas por realizar</p>
+        ) : (
+          // Segunda condición si no hay tareas que coinciden en la búsqueda
+          tareasFiltradas.length === 0 ? (
+            <p>No se encontraron coincidencias</p>
+          ) : (
+            // El método map() permite iterar sobre cada elemento del arreglo de la lista de tareas y aplicarle una función a cada uno de ellos, devolviendo un nuevo arreglo sin modificar el original
+            tareasFiltradas.map((tarea, index) => (
+              <div className={style.individualTask} key={index}>
+                {/* Condición con operador ternario para tachar las tareas que esten completas */}
+                <div style={{ textDecoration: tarea.completada ? 'line-through' : 'none' }} key={tarea.descripcion}>
+                  <p>{tarea.descripcion}</p>
+                </div>
+                <div>
+                  {/* Condición con operador ternario que cambia el texto del botón según el estado de la tarea */}
+                  <Button text={tarea.completada ? "Desmarcar" : "Marcar como Completa"} onClick={() => completarTarea(index)}/>
+                  <Button text="Eliminar" onClick={() => eliminarTarea(index)}  />
+                </div>
+              </div>
+            ))
+          )
+        )}
       </div>
       {/* Fin de Lista de Tareas */}
       {/* Inicio de Contadores */}
-      <div>
+      <div className={style.counter}>
         <div>
-          Contadores
+          Tareas Totales: {tareas.length}
         </div>
-        <div className={style.counter}>
-          <div>
-            Tareas Totales: {tareas.length}
-          </div>
-          <div>
-            Tareas Completadas: {tareasCompletadas}
-          </div>
+        <div>
+          Tareas Completadas: {tareasCompletadas}
         </div>
       </div>
       {/* Fin de Contadores */}

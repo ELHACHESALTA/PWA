@@ -4,6 +4,8 @@
 
 > En el siguiente proyecto se desarrolló a una aplicación que permite al usuario agregar, marcar como completadas y eliminar tareas de una lista. Cada tarea tiene una descripción y un estado de completitud. Con la lista se puede observar el número total de tareas y cuantas están completadas. Además se implemento un buscador que filtra las tareas según lo que sea ingresado, se utilizó componentes reutilizables, el hook useState para almacenar el estado interno de las tareas, renderizado de listas con .map(), renderizado condicional y botones para cambiar el estado o eliminar tareas.
 
+![To-Do_List](/public/todolist.jpg)
+
 ## :office: Universidad Nacional del Comahue - Facultad de Informática
 
 - **Carrera:** Tecnicatura Universitaria en Desarrollo Web
